@@ -9,10 +9,10 @@ import math
 try:
   from apng import APNG
 except ModuleNotFoundError:
-  import os
   os.system('pip install apng')
   from apng import APNG
 
+# キャンバス
 
 class ACanvas(object):
     width: int  # 横幅
@@ -92,8 +92,7 @@ class AStudio(object):
             cx = self.width // 2
             cy = self.height - 20
             tw, th = canvas.draw.textsize(caption)
-            canvas.draw.rectangle(
-                (20, cy-th, self.width-20, cy+th), fill=(0, 0, 0, 0))
+            canvas.draw.rectangle((20, cy-th, self.width-20, cy+th), fill=(0, 0, 0, 0))
             canvas.draw.text((cx-tw/2, cy-th/2), caption, fill='white')
         filename = f'frame{self.frame}.png'
         canvas.image.save(filename)
@@ -221,7 +220,7 @@ nami_url = 'https://1.bp.blogspot.com/-2ut_UQv3iss/X-Fcs_0oAII/AAAAAAABdD8/jrCZT
 class AImage(AShape):
     color: any
 
-    def __init__(self, width=100, height=100, cx=None, cy=None, image=nami_url):
+    def __init__(self, width=100, height=None, cx=None, cy=None, image=nami_url):
         AShape.__init__(self, width, height, cx, cy)
         if image.startswith('http'):
             self.pic = Image.open(io.BytesIO(requests.get(image).content))
@@ -255,6 +254,43 @@ def test_shape(shape, A=100, B=100, a=1, b=1, delta=0):
     # 動画を編集して表示する
     return studio.create_anime(delay=50)
 
+## Text
+
+if os.path.exists('/usr/share/fonts') and not os.path.exists('/usr/share/fonts/truetype/fonts-japanese-gothic.ttf'):
+  os.system('apt-get -y install fonts-ipafont-gothic')
+
+def get_font(fontsize):
+  if os.path.exists('/usr/share/fonts/truetype/fonts-japanese-gothic.ttf'):
+    return ImageFont.truetype('/usr/share/fonts/truetype/fonts-japanese-gothic.ttf', fontsize)
+  # Macの場合
+  return ImageFont.truetype('/System/Library/Fonts/ヒラギノ角ゴシック W7.ttc', fontsize)
+
+
+class AText(AShape):
+    data: str
+    font: ImageFont
+    color: any
+
+    def __init__(self, width=300, height=None, cx=None, cy=None, data='ABC', font=None, fontsize=None, color=None):
+        AShape.__init__(self, width, height, cx, cy)
+        self.data = data
+        self.font = font
+        if fontsize is not None:
+            self.font = get_font(fontsize)
+        self.color = get_color(color)
+
+    def render(self, canvas: ACanvas, frame: int):
+        # スーパークラスのメソッドを読んで描画域を確認する
+        #AShape.render(self, canvas, frame)
+        if self.font is None:
+            canvas.draw.text((self.cx, self.cy), str(self.data), fill=self.color)
+        else:
+            # フォントの大きさをとって位置合わせする
+            w, h = canvas.draw.textsize(str(self.data), self.font)
+            canvas.draw.text((self.cx - w//2, self.cy-h//2), str(self.data), font=self.font, fill=self.color)
+
+### Misc
+  
 def monte(n):
     studio = AStudio(200, 200)
     ox, oy = 0, 200
@@ -344,37 +380,5 @@ def test_board():
 
 # test_board()
 
-if os.path.exists('/usr/share/fonts') and not os.path.exists('/usr/share/fonts/truetype/fonts-japanese-gothic.ttf'):
-  os.system('apt-get -y install fonts-ipafont-gothic')
-
-def get_font(fontsize):
-  if os.path.exists('/usr/share/fonts/truetype/fonts-japanese-gothic.ttf'):
-    return ImageFont.truetype('/usr/share/fonts/truetype/fonts-japanese-gothic.ttf', fontsize)
-  # Macの場合
-  return ImageFont.truetype('/System/Library/Fonts/ヒラギノ角ゴシック W7.ttc', fontsize)
-
-
-class AText(AShape):
-    data: str
-    font: ImageFont
-    color: any
-
-    def __init__(self, width=300, height=None, cx=None, cy=None, data='ABC', font=None, fontsize=None, color=None):
-        AShape.__init__(self, width, height, cx, cy)
-        self.data = data
-        self.font = font
-        if fontsize is not None:
-            self.font = get_font(fontsize)
-        self.color = get_color(color)
-
-    def render(self, canvas: ACanvas, frame: int):
-        # スーパークラスのメソッドを読んで描画域を確認する
-        #AShape.render(self, canvas, frame)
-        if self.font is None:
-            canvas.draw.text((self.cx, self.cy), str(self.data), fill=self.color)
-        else:
-            # フォントの大きさをとって位置合わせする
-            w, h = canvas.draw.textsize(str(self.data), self.font)
-            canvas.draw.text((self.cx - w//2, self.cy-h//2), str(self.data), font=self.font, fill=self.color)
 
 #test_shape(AText(data='うまく表示される？', fontsize=32))
