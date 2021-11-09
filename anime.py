@@ -201,11 +201,27 @@ class APolygon(AShape):
             p.append((x, y))
         canvas.draw.polygon(p, fill=self.color)
 
+class RollingPolygon(APolygon):
+
+    def render(self, canvas: ACanvas, tick: int):
+        theta = math.pi * 2 / self.N
+        slope = math.pi * 2 * 30 * (tick/180)  # 自転させる
+        # 半径
+        r = min(self.width, self.height)/2
+        # 頂点の数だけ頂点の座標を計算する
+        points = []
+        for i in range(self.N):
+            x = self.cx + r * math.cos(theta*i + self.slope + slope)
+            y = self.cy + r * math.sin(theta*i + self.slope + slope)
+            points.append((x, y))
+        canvas.draw.polygon(points, fill=self.color)
+
+name_url = 'https://1.bp.blogspot.com/-2ut_UQv3iss/X-Fcs_0oAII/AAAAAAABdD8/jrCZTd_xK-Y6CP1KwOtT_LpEpjp-1nvxgCNcBGAsYHQ/s1055/onepiece03_nami.png'
 
 class AImage(AShape):
     color: any
 
-    def __init__(self, width=100, height=100, cx=None, cy=None, image='a.png'):
+    def __init__(self, width=100, height=100, cx=None, cy=None, image=nami_url):
         AShape.__init__(self, width, height, cx, cy)
         if image.startswith('http'):
             self.pic = Image.open(io.BytesIO(requests.get(image).content))
