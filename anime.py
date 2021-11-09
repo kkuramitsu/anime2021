@@ -216,7 +216,7 @@ class RollingPolygon(APolygon):
             points.append((x, y))
         canvas.draw.polygon(points, fill=self.color)
 
-name_url = 'https://1.bp.blogspot.com/-2ut_UQv3iss/X-Fcs_0oAII/AAAAAAABdD8/jrCZTd_xK-Y6CP1KwOtT_LpEpjp-1nvxgCNcBGAsYHQ/s1055/onepiece03_nami.png'
+nami_url = 'https://1.bp.blogspot.com/-2ut_UQv3iss/X-Fcs_0oAII/AAAAAAABdD8/jrCZTd_xK-Y6CP1KwOtT_LpEpjp-1nvxgCNcBGAsYHQ/s1055/onepiece03_nami.png'
 
 class AImage(AShape):
     color: any
@@ -233,6 +233,27 @@ class AImage(AShape):
         pic = self.pic.resize((int(w), int(h)))
         canvas.image.paste(pic, (int(ox), int(oy)), pic)
 
+import math
+
+def test_shape(shape, A=100, B=100, a=1, b=1, delta=0):
+    # スタジオを用意
+    studio = AStudio(300,300)
+
+    # スタジオに被写体を一つ追加する
+    studio.append(shape)
+
+    frames = 60
+    for t in range(frames):      
+        x = 150 + A*math.cos(a*(2*math.pi*t/frames))
+        y = 150 - B*math.sin(b*(2*math.pi*t/frames) + delta)
+        # 被写体の中心を移動させる
+        shape.cx = x
+        shape.cy = y
+        # 全ての移動が終わったら、撮影
+        studio.render()
+
+    # 動画を編集して表示する
+    return studio.create_anime(delay=50)
 
 def monte(n):
     studio = AStudio(200, 200)
@@ -298,50 +319,6 @@ class ABoard(AShape):
                 cy = oy + dy*j + dy/2
                 shape = self.get_shape(i, j)
                 shape(dx-2, dy-2, cx, cy).render(canvas, frame)
-
-
-def test_anime():
-    # スタジオを用意
-    studio = AStudio()
-
-    # スタジオに被写体を一つ追加する
-    shape = AShape(50, 50)
-    studio.append(shape)
-
-    frames = 50
-    for t in range(frames):
-        x = 100*cos(2*pi*t/frames) + 200
-        y = 50*sin(2*pi*t/frames) + 150
-        # 被写体の中心を移動させる
-        shape.cx = x
-        shape.cy = y
-        # 全ての移動が終わったら、撮影
-        studio.render()
-
-    # 動画を編集して表示する
-    return studio.create_anime(delay=1000/60)
-
-
-def test_shape(shape):
-    # スタジオを用意
-    studio = AStudio()
-
-    # スタジオに被写体を一つ追加する
-    studio.append(shape)
-
-    frames = 50
-    for t in range(frames):
-        x = 100*cos(2*pi*t/frames) + 200
-        y = 50*sin(2*pi*t/frames) + 150
-        # 被写体の中心を移動させる
-        shape.cx = x
-        shape.cy = y
-        # 全ての移動が終わったら、撮影
-        studio.render()
-
-    # 動画を編集して表示する
-    return studio.create_anime()
-
 
 # test_anime()
 # test_shape(TrailCircle(width=50))
