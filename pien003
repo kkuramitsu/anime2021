@@ -19,6 +19,3 @@ class GuruGuruPien(AShape):
     self.pien.cy = self.cy
     self.poly.render(canvas, tick)
     self.pien.render(canvas, tick)
-    
-shape = GuruGuruPien(100,100)
-IPython.display.Image(test_shape(shape))
