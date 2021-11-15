@@ -1,5 +1,7 @@
 from anime2021.anime import AShape, RollingPolygon, AImage
 
+# test
+
 class GuruGuruNami(AShape):
   def __init__(self, width=100, height=None, cx=None, cy=None, N=3):
     AShape.__init__(self, width, height, cx, cy)
