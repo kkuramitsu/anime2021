@@ -1,4 +1,4 @@
-from anime2021.anime import AShape,test_shape,ACanvas,Image,RollingPolygon
+from anime2021.anime import AShape,test_shape,ACanvas,Image
 import IPython,io,requests,math
 
 Usagi='https://2.bp.blogspot.com/-JjTR8PfARXk/Wn1aB0d4gEI/AAAAAAABKRk/3dpdA1hZI4sUTN2AmW5CEVYv3JMczyWYgCLcBGAs/s400/mask_animal_usagi.png'
