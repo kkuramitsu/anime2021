@@ -6,7 +6,7 @@ class RollingAnpanman(AShape):
     color: any
     def __init__(self, width=100, height=None, cx=None, cy=None, image=Anpanman):
         AShape.__init__(self, width, height, cx, cy)
-        if image.startswith('https://pics.prcm.jp/64eda603621c9/82347972/png/82347972.png'):
+        if image.startswith('https'):
             self.pic = Image.open(io.BytesIO(requests.get(image).content))
         else:
             self.pic = Image.open(image)
