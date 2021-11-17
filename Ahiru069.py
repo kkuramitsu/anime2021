@@ -1,3 +1,5 @@
+from anime2021.anime import AStudio, AShape
+
 class AAhiru(AShape):
     color: any
     slope: float
