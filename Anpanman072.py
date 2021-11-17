@@ -1,8 +1,9 @@
 from anime2021.anime import AShape,test_shape,ACanvas,Image
+
+Anpanman='https://pics.prcm.jp/64eda603621c9/82347972/png/82347972.png'
+
 class RollingAnpanman(AShape):
     color: any
-    Anpanman='82347972.png'
-
     def __init__(self, width=100, height=None, cx=None, cy=None, image=Anpanman):
         AShape.__init__(self, width, height, cx, cy)
         if image.startswith('https://pics.prcm.jp/64eda603621c9/82347972/png/82347972.png'):
