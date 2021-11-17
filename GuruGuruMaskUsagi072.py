@@ -3,7 +3,7 @@ import IPython,io,requests,math
 
 Usagi='https://2.bp.blogspot.com/-JjTR8PfARXk/Wn1aB0d4gEI/AAAAAAABKRk/3dpdA1hZI4sUTN2AmW5CEVYv3JMczyWYgCLcBGAs/s400/mask_animal_usagi.png'
 
-class GuruGuruUsagi(AShape):
+class GuruGuruMaskUsagi(AShape):
   color: any
   def __init__(self, width=100, height=None, cx=None, cy=None, image=Usagi,N=5):
     AShape.__init__(self, width, height, cx, cy)
