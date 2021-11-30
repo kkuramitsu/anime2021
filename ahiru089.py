@@ -27,7 +27,7 @@ def test_shape2(shape, A=100, B=100, a=5, b=4, delta=-math.pi/4):
         else:
             self.pic = Image.open(image)
 
-    def render(self, canvas: ACanvas2, frame: int):
+    def render(self, canvas: ACanvas, frame: int):
         ox, oy, w, h = self.bounds()
         pic = self.pic.resize((int(w), int(h)))
         canvas.image.paste(pic, (int(ox), int(oy)), pic)
