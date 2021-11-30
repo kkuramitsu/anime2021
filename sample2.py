@@ -4,7 +4,7 @@ import math
 from PIL import Image, ImageDraw, ImageFont
 from apng import APNG
 
-class AStudio(object):
+class AStudio2(object):
     bodies: list
     frame: int
 
@@ -16,7 +16,7 @@ class AStudio(object):
         self.files = []
         self.frame = 0
         
- def append(self, shape):
+    def append(self, shape):
         self.bodies.append(shape) # 被写体を追加する
         return shape
 
@@ -39,7 +39,7 @@ class AStudio(object):
         self.files = []
         return filename
 
-class ACanvas(object):
+class ACanvas2(object):
     width:int    #横幅
     height:int   #高さ
     background: any  #背景色
@@ -53,7 +53,7 @@ class ACanvas(object):
         self.image = Image.new('RGBA', (self.width, self.height), self.background)
         self.draw = ImageDraw.Draw(self.image, 'RGBA')
         
-class AShape(object):    
+class AShape2(object):    
     width:int  #幅
     height:int #高さ
     cx:int #中心点のx
@@ -74,14 +74,14 @@ class AShape(object):
         oy = self.cy - h/2
         return ox, oy, w, h
 
-    def render(self, canvas: ACanvas, tick: int):
+    def render(self, canvas: ACanvas2, tick: int):
         ox, oy, w, h = self.bounds()
         canvas.draw.rectangle((ox, oy, ox+w, oy+h), fill=(127,127,127))
 
 
-def test_shape(shape, A=100, B=100, a=5, b=4, delta=-math.pi/4):
+def test_shape2(shape, A=100, B=100, a=5, b=4, delta=-math.pi/4):
     # スタジオを用意
-    studio = AStudio(300,300)
+    studio = AStudio2(300,300)
 
     # スタジオに被写体を一つ追加する
     studio.append(shape)
@@ -99,17 +99,17 @@ def test_shape(shape, A=100, B=100, a=5, b=4, delta=-math.pi/4):
     # 動画を編集して表示する
     return studio.create_anime(delay=1/100000000000)
     
-class AImage(AShape):
+class AImage2(AShape):
     color: any
 
     def __init__(self, width=100, height=None, cx=None, cy=None, image='furo_ducky.png'):
-        AShape.__init__(self, width, height, cx, cy)
+        AShape2.__init__(self, width, height, cx, cy)
         if image.startswith('http'):
             self.pic = Image.open(io.BytesIO(requests.get(image).content))
         else:
             self.pic = Image.open(image)
 
-    def render(self, canvas: ACanvas, frame: int):
+    def render(self, canvas: ACanvas2, frame: int):
         ox, oy, w, h = self.bounds()
         pic = self.pic.resize((int(w), int(h)))
         canvas.image.paste(pic, (int(ox), int(oy)), pic)
