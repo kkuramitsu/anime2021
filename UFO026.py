@@ -41,7 +41,3 @@ class AUFO(AShape):
 
         # 動画を編集して表示する
         return studio.create_anime(delay=50)
-      
-      
-shape = AUFO()
-IPython.display.Image(shape.FlyingUFO())
