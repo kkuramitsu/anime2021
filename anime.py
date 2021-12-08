@@ -145,7 +145,6 @@ class ARectangle(AShape):
 
     def render(self, canvas: ACanvas, frame: int):
         ox, oy, w, h = self.bounds()
-        print(ox, oy, w, h)
         canvas.draw.rectangle((ox, oy, ox+w, oy+h), fill=self.color)
 
 
