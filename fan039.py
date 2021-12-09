@@ -2,7 +2,7 @@ import os, IPython
 from PIL import Image, ImageDraw, ImageFont
 from apng import APNG
 import math
-from anime2021.anime import AStudio, AShape, get_color, test_shape, AImage, ARectangle
+from anime2021.anime import AStudio, AShape, get_color, test_shape, AImage, ARectangle, ACanvas
 
 class ACircle(AShape):
   color: any
