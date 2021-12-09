@@ -1,9 +1,6 @@
-!pip install apng
 import os, IPython
 from PIL import Image, ImageDraw, ImageFont
 from apng import APNG
-!apt-get -y install fonts-ipafont-gothic
-font = ImageFont.truetype('/usr/share/fonts/truetype/fonts-japanese-gothic.ttf', 40)
 import math
 from anime2021.anime import AStudio, AShape, get_color, test_shape, AImage, ARectangle
 
