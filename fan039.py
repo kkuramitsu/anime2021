@@ -2,8 +2,20 @@ import os, IPython
 from PIL import Image, ImageDraw, ImageFont
 font = ImageFont.truetype('/usr/share/fonts/truetype/fonts-japanese-gothic.ttf', 40)
 import math
-from anime2021.anime import AStudio, AShape, get_color, test_shape, AImage, ARectangle, ACanvas
+from anime2021.anime import AStudio, AShape, get_color, test_shape, AImage, ACanvas
 
+class ARectangle(AShape):
+    color: any
+
+    def __init__(self, width=50, height=50, cx=None, cy=None, color=None):
+        # スーパークラスのコンストラクタを呼ぶ
+        AShape.__init__(self, width, height, cx, cy)
+        self.color = get_color(color)
+
+    def render(self, canvas: ACanvas, tick: int):
+        ox, oy, w, h = self.bounds()
+        canvas.draw.rectangle((ox, oy, ox+w, oy+h), fill=self.color)
+        
 class ACircle(AShape):
   color: any
 
