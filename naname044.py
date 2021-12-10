@@ -20,7 +20,7 @@ def naname(shape, A=100, B=100, a=1, b=1, delta=0):
     # 動画を編集して表示する
     return studio.create_anime(delay=50)
 
-  from anime2021.anime import AShape, RollingPolygon, AImage
+from anime2021.anime import AShape, RollingPolygon, AImage
 
 class Move(AShape):
   def __init__(self, width=100, height=None, cx=None, cy=None, N=3):
