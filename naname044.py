@@ -20,7 +20,22 @@ def naname(shape, A=100, B=100, a=1, b=1, delta=0):
     # 動画を編集して表示する
     return studio.create_anime(delay=50)
 
-from anime2021.anime import AShape, RollingPolygon, AImage
+class Movemove(APolygon):
+
+    def render(self, canvas: ACanvas, tick: int):
+        theta = math.pi * 2 / self.N
+        slope = math.pi * 2 * 30 * (tick/180)  # 自転させる
+        # 半径
+        r = min(self.width, self.height)/2
+        # 頂点の数だけ頂点の座標を計算する
+        points = []
+        for i in range(self.N):
+            x = self.cx + r * math.cos(theta*i + self.slope + slope)
+            y = self.cy + r * math.sin(theta*i + self.slope + slope)
+            points.append((x, y))
+        canvas.draw.polygon(points, fill=self.color)
+
+from anime2021.anime import AShape, AImage
 
 class Move(AShape):
   def __init__(self, width=100, height=None, cx=None, cy=None, N=3):
