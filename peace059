@@ -1,0 +1,11 @@
+!git clone https://github.com/peace314/anime2021.git
+
+from anime2021.anime import AShape, AStudio, RollingPolygon, AImage,test_shape
+
+import IPython
+shape = RollingPolygon(100,100,N=7)
+IPython.display.Image(test_shape(shape))
+
+apple= "https://4.bp.blogspot.com/-uY6ko43-ABE/VD3RiIglszI/AAAAAAAAoEA/kI39usefO44/s800/fruit_ringo.png"
+shape = AImage(100,100,image=apple)
+IPython.display.Image(test_shape(shape))
