@@ -1,7 +1,5 @@
 from anime2021.anime import ACanvas, AShape, AStudio, ARectangle
-import os, IPython, io, requests
-from PIL import Image, ImageDraw, ImageFont
-from apng import APNG
+
 
 alien_ufo = 'https://1.bp.blogspot.com/-8vjnbp_AXMM/USSkq9AIKTI/AAAAAAAANV0/PQ6FLf-xUks/s1600/alien_ufo.png'
 
