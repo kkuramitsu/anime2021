@@ -1,5 +1,4 @@
 from anime2021.anime import ACanvas, AShape, AStudio, ARectangle
-!pip install apng
 import os, IPython, io, requests
 from PIL import Image, ImageDraw, ImageFont
 from apng import APNG
