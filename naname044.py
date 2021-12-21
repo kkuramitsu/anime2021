@@ -1,5 +1,5 @@
 import math
-from anime2021.anime import AShape, AImage ,APolygon
+from anime2021.anime import AShape, AImage ,APolygon,ACanvas,AStudio
 
 def naname(shape, A=100, B=100, a=1, b=1, delta=0):
     # スタジオを用意
