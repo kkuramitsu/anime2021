@@ -1,4 +1,5 @@
 import math
+from anime2021.anime import AShape, AImage ,APolygon
 
 def naname(shape, A=100, B=100, a=1, b=1, delta=0):
     # スタジオを用意
@@ -35,7 +36,7 @@ class Movemove(APolygon):
             points.append((x, y))
         canvas.draw.polygon(points, fill=self.color)
 
-from anime2021.anime import AShape, AImage
+
 
 class Move(AShape):
   def __init__(self, width=100, height=None, cx=None, cy=None, N=3):
