@@ -1,6 +1,6 @@
-#ぐるぐる野球
+# ぐるぐる野球
 
-##使い方
+## 使い方
 
 ```
 from anime2021.baseball046 import GuruGuruball
@@ -9,6 +9,6 @@ shape = GuruGuruball()
 IPython.display.Image(shape.BASEBALL())
 ```
 
-##例
+## 例
 
-![image](file:///C:/Users/Mizuki%20Suzuki/Downloads/anime.png)
+![anime_(2)]
