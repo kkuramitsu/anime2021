@@ -10,4 +10,5 @@ IPython.display.Image(shape.BASEBALL())
 ```
 
 ##例
-![anime.png](file:///C:/Users/Mizuki%20Suzuki/Downloads/anime.png)
+
+![image](file:///C:/Users/Mizuki%20Suzuki/Downloads/anime.png)
