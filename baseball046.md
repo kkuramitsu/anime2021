@@ -11,4 +11,4 @@ IPython.display.Image(shape.BASEBALL())
 
 ## 例
 
-![anime_(2)]
+![](baseball.png)
