@@ -6,4 +6,4 @@ import IPython
 IPython.display.Image(chinchira_shape(RollingChinchira()))
 ```
 ## 例
-![ローリングチンチラ]()
+![ローリングチンチラ](anime.png)
