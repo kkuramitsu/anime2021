@@ -3,6 +3,7 @@ import IPython, io, math, os
 from PIL import Image, ImageDraw, ImageFont
 from apng import APNG
 
+!wget https://1.bp.blogspot.com/-2oEN0Xw14qA/XxU0UZDbJtI/AAAAAAABaJM/m4eIioexDN0vD-zI1gIZCK17OU1UQLFa
 
 class AAhiru(AShape):
     color: any
