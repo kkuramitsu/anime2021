@@ -1,4 +1,5 @@
-from anime2021.anime import AStudio, AShape
+from anime2021.anime import AStudio, AShape, ACanvas, test_shape
+import IPython, io, math
 
 class AAhiru(AShape):
     color: any
