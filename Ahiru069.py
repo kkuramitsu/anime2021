@@ -1,5 +1,8 @@
 from anime2021.anime import AStudio, AShape, ACanvas, test_shape
-import IPython, io, math
+import IPython, io, math, os
+from PIL import Image, ImageDraw, ImageFont
+from apng import APNG
+
 
 class AAhiru(AShape):
     color: any
