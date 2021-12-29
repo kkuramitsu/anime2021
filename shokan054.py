@@ -1,3 +1,4 @@
+!git clone https://github.com/shizufleur/anime2021.git
 from anime2021.anime import AShape, AStudio, RollingPolygon, AImage, test_shape
 import IPython
 
