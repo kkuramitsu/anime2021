@@ -8,6 +8,7 @@ studio.append(heart)
 studio.render()
 IPython.display.Image(studio.create_anime(delay=800))
 ```
+![](AHeart_sample1.png)
 
 ### ハートマークの色を変えてみたい場合はこのようなコードになります
 ```
@@ -17,6 +18,7 @@ studio.append(heart)
 studio.render()
 IPython.display.Image(studio.create_anime(delay=800))
 ```
+![](AHeart_sample2.png)
 
 ### 色に加えて、大きさも変えたい場合はこのようなコードになります
 ```
@@ -27,3 +29,4 @@ studio.append(heart)
 studio.render()
 IPython.display.Image(studio.create_anime(delay=800))
 ```
+![](AHeart_sample3.png)
