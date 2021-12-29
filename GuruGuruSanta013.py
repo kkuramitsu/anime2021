@@ -1,3 +1,4 @@
+!pip install apng
 from anime2021.anime import AStudio,AShape,test_shape,ACanvas,Image
 import IPython,io,requests,math
 
