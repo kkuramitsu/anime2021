@@ -1,5 +1,5 @@
 from anime2021.anime import AShape, AStudio, RollingPolygon, AImage, test_shape
-import UPython
+import IPython
 
 syoukan='https://1.bp.blogspot.com/-P7kfu7ps8cQ/XhwqQ_oKFeI/AAAAAAABW9g/dHjpNuVa-AsOY0fKxY5h_ZHtaymlJnRrwCNcBGAsYHQ/s400/fantasy_mahoujin_syoukan.png'
 shape = AImage(100, 100, image=syoukan)
