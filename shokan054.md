@@ -2,5 +2,5 @@
 
 shokan054.pyをそのまま実行する。
 
-![](shokan.png)
+![](shokan054.png)
 
