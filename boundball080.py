@@ -2,7 +2,7 @@ from anime2021.anime import AShape, ACircle, ACanvas, Image
 
 import math
 
-def test_shape(shape, A=100, B=100, a=1, b=1, delta=0):
+def boundball(shape, A=100, B=100, a=1, b=1, delta=0):
   studio = AStudio(300,300)
   studio.append(shape)
 
