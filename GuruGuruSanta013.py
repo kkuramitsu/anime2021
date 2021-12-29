@@ -1,5 +1,6 @@
+import IPython
+from PIL import Image
 from anime2021.anime import AStudio, ACanvas, AShape, test_shape, Image
-import IPython, io
 
 small_star7_yellow = 'https://2.bp.blogspot.com/-iLvMf6s3b6M/V0QnoQqvVzI/AAAAAAAA69w/AdU5l6HIy3MX5CTXrfbMNNLbuksyyoC3QCLcB/s800/small_star7_yellow.png'
 christmas_santa_sori = 'https://1.bp.blogspot.com/-8FaGc_NoAiU/UYzXHqVasJI/AAAAAAAAR4k/540GCCzmI38/s500/christmas_santa_sori.png'
