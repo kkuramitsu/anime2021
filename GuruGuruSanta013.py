@@ -1,5 +1,3 @@
-import IPython
-from PIL import Image
 from anime2021.anime import AStudio, ACanvas, AShape, test_shape
 import IPython, Image, io
 
