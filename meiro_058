@@ -1,0 +1,74 @@
+EMPTY   = 0
+BLOCK   = 1
+GOAL    = 2
+VISITED = 3
+
+mazedata = '''
+XXXXXXXXXXXX
+X  XX X   XX
+G  XX   X  X
+XX  XXX X  X
+X  XX   X  X
+XX   XXX    
+X  X     XXX
+X     XXXXXX
+X  X     XXX
+XXXXXXXXXXXX
+'''
+def make_maze(mazedata):
+  tbl = {
+      ' ': EMPTY,
+      'X': BLOCK,
+      'G': GOAL,
+  }
+
+  maze={}
+
+  for y, line in enumerate(mazedata.split('\n')[1:]):
+    for x, c in enumerate(line):
+      maze[(x,y)] = tbl[c]
+
+  return x+1, y, maze
+
+X, Y, maze = make_maze(mazedata)
+block_size = 300 // max(X, Y)
+studio = AStudio(300, 300)
+for y in range(Y):
+  for x in range(X):
+    xx = x * block_size + block_size // 2
+    yy = y * block_size + block_size // 2
+    if maze[(x,y)] == BLOCK:
+      block = ARectangle(block_size, block_size, xx, yy, color='black')
+      studio.append(block)
+    if maze[(x,y)] == GOAL:
+      block = ACircle(block_size, block_size, xx, yy, color='gray')
+      studio.append(block)
+
+robot = AImage(block_size, block_size)
+studio.append(robot)
+
+def set_location(robot, x, y):
+  robot.cx = x * block_size + block_size // 2
+  robot.cy = y * block_size + block_size // 2
+
+
+import random
+
+dxdy = [(-1, 0), (1, 0), (0, 1), (0, -1)]
+
+def random_walk(maze, x, y):
+  while True:
+    random.shuffle(dxdy)
+    dx, dy = dxdy[0]
+    if (x+dx, y+dy) in maze and maze[(x+dx, y+dy)] == EMPTY:
+      return x+dx, y+dy
+
+x, y = 10,5 
+for _ in range(100): 
+  set_location(robot, x, y) 
+  studio.render()
+  if maze[(x, y)] == GOAL: 
+    break
+  x, y = random_walk(maze, x, y)
+
+IPython.display.Image(studio.create_anime(delay=400))

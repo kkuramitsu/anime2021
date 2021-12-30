@@ -1,0 +1,7 @@
+!wget https://2.bp.blogspot.com/-J3MxFWPBrjA/U-8GZg7jtmI/AAAAAAAAk4Q/w_Kq_SFuvx0/s800/ike.png
+studio = AStudio()
+shape1=AImage(width=200,image='ike.png')
+studio.append(shape1)
+studio.append(AImage(width=150,image='hashiru_hito.png'))
+studio.render()
+IPython.display.Image(studio.create_anime())
