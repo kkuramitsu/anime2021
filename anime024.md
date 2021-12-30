@@ -1,5 +1,5 @@
-#グルグル図形
-###anime024.pyに書かれているように以下の分を実行する。(  )
+#グルグル図形  
+###anime024.pyに書かれているように以下の分を実行する。
 >from anime2021.anime import AStudio, RollingPolygon, AShape, AText, test_shape
  import IPython
 
@@ -12,3 +12,5 @@
  for i in range(60):
      studio.render()
  IPython.display.Image(studio.create_anime())
+ 
+ 
