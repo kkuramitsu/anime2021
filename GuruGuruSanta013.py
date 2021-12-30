@@ -18,6 +18,7 @@ class AImage(AShape):
         ox, oy, w, h = self.bounds()
         pic = self.pic.resize((int(w), int(h)))
         canvas.image.paste(pic, (int(ox), int(oy)), pic)
+        
 class AImage2(AShape):
     color: any
 
@@ -32,7 +33,9 @@ class AImage2(AShape):
         ox, oy, w, h = self.bounds()
         pic = self.pic.resize((int(w), int(h)))
         canvas.image.paste(pic, (int(ox), int(oy)), pic)
+        
 class GuruGuruSanta(AShape):
+    
     def __init__(self, width=100, height=None, cx=None, cy=None, N=3):
         AShape.__init__(self, width, height, cx, cy)
         self.N = N
