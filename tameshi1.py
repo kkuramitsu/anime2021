@@ -1,3 +1,19 @@
+class ACanvas(object):
+    width: int  # 横幅
+    height: int  # 高さ
+    background: any
+    image: Image
+    draw: ImageDraw
+
+    def __init__(self, width=400, height=300, background='white'):
+        self.width = width
+        self.height = height
+        self.background = background
+        self.image = Image.new(
+            'RGBA', (self.width, self.height), self.background)
+        self.draw = ImageDraw.Draw(self.image, 'RGBA')
+
+
 class AShape(object):
     cx: int
     cy: int
