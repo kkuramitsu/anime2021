@@ -1,6 +1,6 @@
 # グルグル図形  
 ## 使い方
-### anime024.pyに書かれているように以下の文を実行する。
+### anime024.pyに書かれているように,以下の文を実行する。
 >from anime2021.anime import AStudio, RollingPolygon, AShape, AText, test_shape  
  import IPython  
  
