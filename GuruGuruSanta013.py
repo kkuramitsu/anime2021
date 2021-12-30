@@ -33,16 +33,16 @@ class AImage2(AShape):
         pic = self.pic.resize((int(w), int(h)))
         canvas.image.paste(pic, (int(ox), int(oy)), pic)
 class GuruGuruSanta(AShape):
-  def __init__(self, width=100, height=None, cx=None, cy=None, N=3):
-    AShape.__init__(self, width, height, cx, cy)
-    self.N = N
-    self.image = AImage(width, height, cx, cy)
-    self.image2 = AImage2(width, height, cx, cy)
-  def render(self, canvas, tick):
-    self.image.cx = self.cx
-    self.image.cy = self.cy
-    self.image2.cx = self.cx
-    self.image2.cy = self.cy
-    self.image.render(canvas, tick)  
-    self.image2.render(canvas, tick) 
+    def __init__(self, width=100, height=None, cx=None, cy=None, N=3):
+        AShape.__init__(self, width, height, cx, cy)
+        self.N = N
+        self.image = AImage(width, height, cx, cy)
+        self.image2 = AImage2(width, height, cx, cy)
+    def render(self, canvas, tick):
+        self.image.cx = self.cx
+        self.image.cy = self.cy
+        self.image2.cx = self.cx
+        self.image2.cy = self.cy
+        self.image.render(canvas, tick)  
+        self.image2.render(canvas, tick) 
  
