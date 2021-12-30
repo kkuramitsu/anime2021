@@ -1,4 +1,4 @@
-from anime2021.anime import AStudio, AShape,  test_shape, ACanvas
+from anime2021.anime import AStudio, AShape,  test_shape, ACanvas, Image
 import IPython,io,requests,math
 
 small_star7_yellow = 'https://1.bp.blogspot.com/-8FaGc_NoAiU/UYzXHqVasJI/AAAAAAAAR4k/540GCCzmI38/s500/christmas_santa_sori.png'
