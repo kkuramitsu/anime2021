@@ -12,7 +12,7 @@ class AShape(object):
         self.cy = self.height / 2 if cy is None else cy
         self.scale = 1.0
 
-    def setPosition(self, x, y, align=(CENTER, CENTER)):
+    def setPosition(self, x, y, align=(0, 0)):
         self.cx = x + (self.width//2) * align[0]
         self.cy = y + (self.height//2) * align[1]
 
