@@ -1,4 +1,5 @@
 from anime2021.GuruGuruSanta013 import *
+
 import IPyhton
 IPython.display.Image(test_shape(GuruGuruSanta(80,80,N=5)))
 
