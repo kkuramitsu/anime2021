@@ -1,4 +1,4 @@
-from anime2021.anime import ACanvas, AShape, AStudio, RollingPolygon, test_shape
+from anime2021.anime import ACanvas, AShape, AStudio, RollingPolygon, test_shape, Image
 import os, IPython, io, requests
 
 
@@ -8,7 +8,7 @@ christmas_santa_sori = 'https://2.bp.blogspot.com/-iLvMf6s3b6M/V0QnoQqvVzI/AAAAA
 class AImage(AShape):
     color: any
 
-    def __init__(self, width=100, height=None, cx=None, cy=None, image=small_star7_yellow):
+    def __init__(self, width=100, height=None, cx=None, cy=None, image = small_star7_yellow):
         AShape.__init__(self, width, height, cx, cy)
         if image.startswith('http'):
             self.pic = Image.open(io.BytesIO(requests.get(image).content))
@@ -23,7 +23,7 @@ class AImage(AShape):
 class AImage2(AShape):
     color: any
 
-    def __init__(self, width=100, height=None, cx=None, cy=None, image=christmas_santa_sori):
+    def __init__(self, width=100, height=None, cx=None, cy=None, image = christmas_santa_sori ):
         AShape.__init__(self, width, height, cx, cy)
         if image.startswith('http'):
             self.pic = Image.open(io.BytesIO(requests.get(image).content))
