@@ -1,4 +1,4 @@
-from anime2021.anime import ACanvas, AShape, AStudio, RollingPolygon, AImage, test_shape
+from anime2021.anime import ACanvas, AShape, AStudio, RollingPolygon, test_shape
 import math
 import os, IPython, io, requests
 from PIL import Image, ImageDraw, ImageFont
