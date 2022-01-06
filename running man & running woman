@@ -1,0 +1,26 @@
+!git clone https://github.com/nana5457/anime2021.git
+from anime2021.anime import AShape,AStudio,RollingPolygon,AImage,test_shape
+import IPython
+runningman='https://2.bp.blogspot.com/-JGH_cz6Tzwo/WKbKxiP9ByI/AAAAAAABB3I/a5XZSzqRWCgWMBLRDg6xTUY2zspSHrMZACLcB/s400/pose_hashiru_guruguru_man.png'
+shape=AImage(100,100,image=runningman)
+IPython.display.Image(test_shape(shape))
+runningwoman='https://4.bp.blogspot.com/-pn0MTA6n__8/WKbKyP9pi-I/AAAAAAABB3Q/FEpvneHz-Lg5HdvsnnFb6ycN_Hhn0TgOwCLcB/s400/pose_hashiru_guruguru_woman.png'
+shape=AImage(100,100,image=runningwoman)
+IPython.display.Image(test_shape(shape))
+
+class running(AShape):
+  def  __init__(self,width=50,height=None,cx=None,cy=None,N=5):
+    AShape.__init__(self,width,height,cx,cy)
+    self.man=AImage(width,height,image=runningman)
+    self.woman=AImage(width,height,image=runningwoman)
+
+  def render(self,canvas,tick):
+    self.man.cx=self.cx
+    self.man.cy=self.cy
+    self.woman.cx=self.cx+60
+    self.woman.cy=self.cy
+    self.man.render(canvas,tick)
+    self.woman.render(canvas,tick)
+
+shape=running(100,100)
+IPython.display.Image(test_shape(shape))
