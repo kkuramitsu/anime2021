@@ -1,0 +1,24 @@
+class RollingPolygon(APolygon):
+
+    def render(self, canvas: ACanvas, tick: int):
+        theta = math.pi * 2 / self.N
+        slope = math.pi * 2 * 30 * (tick/180)  # 自転させる。中で回転させている
+        # 半径
+        r = min(self.width, self.height)/2
+        # 頂点の数だけ頂点の座標を計算する
+        points = []
+        for i in range(self.N):
+            x = self.cx + r * math.cos(theta*i + self.slope + slope)
+            y = self.cy + r * math.sin(theta*i + self.slope + slope)
+            points.append((x, y))
+        canvas.draw.polygon(points, fill=self.color)
+!wget https://1.bp.blogspot.com/-QjB4cioenwU/Xhwqnr1HAaI/AAAAAAABXCA/woeulsblMgAn7BxUCGUiLJ1StAu_4h_IQCNcBGAsYHQ/s1600/pyoko_dance_ballet.png
+studio = AStudio()
+shape = RollingPolygon(width=200, N=7)#ローリングポリボンを追加
+studio.append(shape)
+
+studio.append(AImage(width=200, image='pyoko_dance_ballet.png'))#キャラを追加
+for i in range(60):
+    studio.render()
+IPython.display.Image(studio.create_anime())
+IPython.display.Image(test_shape(AImage(image='anime.png')))
