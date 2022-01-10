@@ -1,0 +1,219 @@
+
+!pip install apng
+import os, IPython
+from PIL import Image, ImageDraw, ImageFont
+from apng import APNG
+
+class AStudio(object):
+    bodies: list
+    frame: int
+
+    def __init__(self, width=400, height=300, background='white'):
+        self.width = width
+        self.height = height
+        self.background = background
+        self.bodies = []
+        self.files = []
+        self.frame = 0
+
+    def append(self, shape):
+        self.bodies.append(shape) 
+        return shape
+
+    def render(self, caption=''):
+        canvas = ACanvas(self.width, self.height, self.background)
+        for body in self.bodies:
+            body.render(canvas, self.frame)
+        filename = f'frame{self.frame}.png'
+        canvas.image.save(filename)
+        self.files.append(filename)
+        self.frame += 1
+
+    def create_anime(self, filename='anime.png', delay=100):
+        APNG.from_files(self.files, delay=int(delay)).save(filename)
+        for image in self.files:
+            os.remove(image) 
+        self.files = []
+        return filename
+
+class ACanvas(object):
+    width:int    
+    height:int  
+    background: any  
+    image: Image
+    draw: ImageDraw
+
+    def __init__(self, width=400, height=300, background='white'):
+        self.width = width
+        self.height = height
+        self.background = background
+        self.image = Image.new('RGBA', (self.width, self.height), self.background)
+        self.draw = ImageDraw.Draw(self.image, 'RGBA')
+
+class AShape(object):    
+    width:int  
+    height:int 
+    cx:int 
+    cy:int
+    scale:float 
+
+    def __init__(self, width, height=None, cx=None, cy=None):
+        self.width = width
+        self.height = width if height is None else height
+        self.cx = self.width / 2 if cx is None else cx
+        self.cy = self.height / 2 if cy is None else cy
+        self.scale = 1.0
+
+    def bounds(self): 
+        w = self.width * self.scale
+        h = self.height * self.scale
+        ox = self.cx - w/2
+        oy = self.cy - h/2
+        return ox, oy, w, h
+
+    def render(self, canvas: ACanvas, tick: int):
+        ox, oy, w, h = self.bounds()
+        canvas.draw.rectangle((ox, oy, ox+w, oy+h), fill=(127,127,127))
+class APolygon1(AShape):
+    color: any
+    slope: float 
+
+    def __init__(self, width=100, height=None, cx=120, cy=120, N=3, slope=0.0, color=None):
+        AShape.__init__(self, width, height, cx, cy)
+        self.N = N
+        self.slope = slope
+        self.color = "#ff4500"
+
+    def render(self, canvas: ACanvas, tick: int):
+        theta = math.pi * 2 / self.N
+        r = min(self.width, self.height)/2
+        points = []
+        for i in range(self.N):
+            x = self.cx + r * math.cos(theta*i + self.slope)
+            y = self.cy + r * math.sin(theta*i + self.slope)
+            points.append((x, y))
+        canvas.draw.polygon(points, fill=self.color)
+
+class APolygon2(AShape):
+    color: any
+    slope: float 
+
+    def __init__(self, width=100, height=None, cx=120, cy=120, N=3, slope=0.0, color=None):
+        AShape.__init__(self, width, height, cx, cy)
+        self.N = N
+        self.slope = slope
+        self.color = "#ff8c00"
+
+    def render(self, canvas: ACanvas, tick: int):
+        theta = math.pi * 2 / self.N
+        r = min(self.width, self.height)/2
+        points = []
+        for i in range(self.N):
+            x = self.cx + r * math.cos(theta*i + self.slope)
+            y = self.cy + r * math.sin(theta*i + self.slope)
+            points.append((x, y))
+        canvas.draw.polygon(points, fill=self.color)
+
+class APolygon3(AShape):
+    color: any
+    slope: float 
+
+    def __init__(self, width=100, height=None, cx=120, cy=120, N=3, slope=0.0, color=None):
+        AShape.__init__(self, width, height, cx, cy)
+        self.N = N
+        self.slope = slope
+        self.color = "#ffa500"
+
+    def render(self, canvas: ACanvas, tick: int):
+        theta = math.pi * 2 / self.N
+        r = min(self.width, self.height)/2
+        points = []
+        for i in range(self.N):
+            x = self.cx + r * math.cos(theta*i + self.slope)
+            y = self.cy + r * math.sin(theta*i + self.slope)
+            points.append((x, y))
+        canvas.draw.polygon(points, fill=self.color)
+
+class APolygon4(AShape):
+    color: any
+    slope: float 
+
+    def __init__(self, width=100, height=None, cx=120, cy=120, N=3, slope=0.0, color=None):
+        AShape.__init__(self, width, height, cx, cy)
+        self.N = N
+        self.slope = slope
+        self.color = "#ffd700"
+
+    def render(self, canvas: ACanvas, tick: int):
+        theta = math.pi * 2 / self.N
+        r = min(self.width, self.height)/2
+        points = []
+        for i in range(self.N):
+            x = self.cx + r * math.cos(theta*i + self.slope)
+            y = self.cy + r * math.sin(theta*i + self.slope)
+            points.append((x, y))
+        canvas.draw.polygon(points, fill=self.color)
+
+class APolygon5(AShape):
+    color: any
+    slope: float 
+
+    def __init__(self, width=100, height=None, cx=120, cy=120, N=3, slope=0.0, color=None):
+        AShape.__init__(self, width, height, cx, cy)
+        self.N = N
+        self.slope = slope
+        self.color = "#ffff00"
+
+    def render(self, canvas: ACanvas, tick: int):
+        theta = math.pi * 2 / self.N
+        r = min(self.width, self.height)/2
+        points = []
+        for i in range(self.N):
+            x = self.cx + r * math.cos(theta*i + self.slope)
+            y = self.cy + r * math.sin(theta*i + self.slope)
+            points.append((x, y))
+        canvas.draw.polygon(points, fill=self.color)
+
+class APolygon6(AShape):
+    color: any
+    slope: float 
+
+    def __init__(self, width=100, height=None, cx=200, cy=200, N=3, slope=0.0, color=None):
+        AShape.__init__(self, width, height, cx, cy)
+        self.N = N
+        self.slope = slope
+        self.color = "#ff4500"
+
+    def render(self, canvas: ACanvas, tick: int):
+        theta = math.pi * 2 / self.N
+        r = min(self.width, self.height)/2
+        points = []
+        for i in range(self.N):
+            x = self.cx + r * math.cos(theta*i + self.slope)
+            y = self.cy + r * math.sin(theta*i + self.slope)
+            points.append((x, y))
+        canvas.draw.polygon(points, fill=self.color)
+
+import math
+studio = AStudio()
+shape1 = APolygon1(width=200, N=8)
+shape2 = APolygon2(width=170, N=8)
+shape3 = APolygon3(width=140, N=8)
+shape4 = APolygon4(width=110, N=8)
+shape5 = APolygon5(width=80, N=8)
+studio.append(shape1)
+studio.append(shape2)
+studio.append(shape3)
+studio.append(shape4)
+studio.append(shape5)
+
+for i in range(60):
+    shape1.slope = (2 * math.pi * i) / 50 
+    shape2.slope = -(2 * math.pi * i) / 50
+    shape3.slope = (2 *math.pi * i) / 50
+    shape4.slope = -(2 *math.pi * i) / 50
+    shape5.slope = (2 *math.pi * i) / 50     
+
+    studio.render()
+
+IPython.display.Image(studio.create_anime())
